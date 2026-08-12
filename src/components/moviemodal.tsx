@@ -20,8 +20,6 @@ export default function MovieModal({
   const [actors, setActors] = useState("");
   const [releaseYear, setReleaseYear] = useState("");
 
-  // Fill the form when editing.
-  // Clear it when adding a new movie.
   useEffect(() => {
     if (movie) {
       setTitle(movie.title);
@@ -34,7 +32,6 @@ export default function MovieModal({
     }
   }, [movie, isOpen]);
 
-  // Don't display anything when the modal is closed
   if (!isOpen) {
     return null;
   }
@@ -44,21 +41,17 @@ export default function MovieModal({
   ) => {
     event.preventDefault();
 
-    // Convert the comma-separated actor input
-    // into an array of strings.
     const actorList = actors
       .split(",")
       .map((actor) => actor.trim())
       .filter((actor) => actor.length > 0);
 
-    // Send the movie data back to movies/page.tsx
     onSave({
       title: title.trim(),
       actors: actorList,
       releaseYear: Number(releaseYear),
     });
 
-    // Clear the form
     setTitle("");
     setActors("");
     setReleaseYear("");

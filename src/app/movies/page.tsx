@@ -16,19 +16,16 @@ export default function MoviesPage() {
   const [selectedMovie, setSelectedMovie] =
     useState<Movie | null>(null);
 
-  // Open the modal for adding a new movie
   const handleAddMovie = () => {
     setSelectedMovie(null);
     setIsModalOpen(true);
   };
 
-  // Open the modal for editing an existing movie
   const handleEditMovie = (movie: Movie) => {
     setSelectedMovie(movie);
     setIsModalOpen(true);
   };
 
-  // Delete a movie
   const handleDeleteMovie = (id: number) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this movie?"
@@ -43,11 +40,9 @@ export default function MoviesPage() {
     );
   };
 
-  // Add or edit a movie
   const handleSaveMovie = (
     movieData: Omit<Movie, "id">
   ) => {
-    // EDIT
     if (selectedMovie) {
       setMovies((currentMovies) =>
         currentMovies.map((movie) =>
@@ -61,7 +56,6 @@ export default function MoviesPage() {
       );
     }
 
-    // ADD
     else {
       const newMovie: Movie = {
         id: Date.now(),
@@ -74,7 +68,6 @@ export default function MoviesPage() {
       ]);
     }
 
-    // Close modal
     setIsModalOpen(false);
     setSelectedMovie(null);
   };

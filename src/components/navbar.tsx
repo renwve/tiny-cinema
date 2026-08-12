@@ -20,7 +20,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <Link href="/movies" className="navbar-logo">
-        🎬 IMR Movies
+        🎬 tiny cinema
       </Link>
 
       <div className="navbar-links">
