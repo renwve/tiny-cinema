@@ -23,8 +23,8 @@ export default function MovieModal({
   useEffect(() => {
     if (movie) {
       setTitle(movie.title);
-      setActors(movie.actors.join(", "));
-      setReleaseYear(movie.releaseYear.toString());
+      setActors(movie.actors ? movie.actors.join(", ") : "");
+      setReleaseYear(movie.release_year ? movie.release_year.toString() : "");
     } else {
       setTitle("");
       setActors("");
@@ -49,7 +49,7 @@ export default function MovieModal({
     onSave({
       title: title.trim(),
       actors: actorList,
-      releaseYear: Number(releaseYear),
+      release_year: Number(releaseYear), // Saved as release_year for database compatibility
     });
 
     setTitle("");
@@ -72,15 +72,11 @@ export default function MovieModal({
         <div className="modal-header">
           <div>
             <span className="modal-eyebrow">
-              {movie
-                ? "UPDATE MOVIE"
-                : "NEW MOVIE"}
+              {movie ? "UPDATE MOVIE" : "NEW MOVIE"}
             </span>
 
             <h2>
-              {movie
-                ? "Edit Movie"
-                : "Add Movie"}
+              {movie ? "Edit Movie" : "Add Movie"}
             </h2>
           </div>
 
@@ -170,9 +166,7 @@ export default function MovieModal({
               type="submit"
               className="save-button"
             >
-              {movie
-                ? "Save Changes"
-                : "Add Movie"}
+              {movie ? "Save Changes" : "Add Movie"}
             </button>
           </div>
         </form>

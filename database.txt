@@ -1,0 +1,12 @@
+-- Run this in the Supabase SQL Editor
+
+-- Create Movies Table
+create table movies (
+    id uuid default gen_random_uuid() primary key,
+    title text not null,
+    actors text[] not null,
+    release_year integer not null,
+    image_url text,
+    created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+alter table movies disable row level security;
