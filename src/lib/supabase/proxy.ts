@@ -1,6 +1,14 @@
+/**
+ * Program: Tiny Cinema
+ * Date: August 12, 2026
+ * Description: This module synchronizes Supabase authentication cookies during Next.js request processing.
+ * Input: It receives the current NextRequest and reads its stored session cookies.
+ * Processing and Output: It validates authentication claims, copies refreshed cookies to the request and response, and outputs the updated response.
+ */
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+// Session refresh: construct a server client and synchronize any changed cookies.
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({
     request,

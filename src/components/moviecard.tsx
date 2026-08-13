@@ -1,5 +1,13 @@
+/**
+ * Program: Tiny Cinema
+ * Date: August 12, 2026
+ * Description: This component presents one movie record and the actions available for managing it.
+ * Input: It receives a Movie object plus edit and delete callback functions from the collection page.
+ * Processing and Output: It formats the poster, title, year, and actor list and outputs a card whose buttons send the selected movie back to the parent.
+ */
 import { Movie } from "@/types/movie";
 
+// Component contract: define the movie data and parent actions required by a card.
 interface MovieCardProps {
   movie: Movie;
   onEdit: (movie: Movie) => void;
@@ -11,6 +19,7 @@ export default function MovieCard({
   onEdit,
   onDelete,
 }: MovieCardProps) {
+  // Card output: display movie details and management controls.
   return (
     <article className="movie-card">
       <div className="movie-poster">

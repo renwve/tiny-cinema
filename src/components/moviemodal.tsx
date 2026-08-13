@@ -1,8 +1,16 @@
+/**
+ * Program: Tiny Cinema
+ * Date: August 12, 2026
+ * Description: This component displays the form used to create a new movie or modify an existing movie.
+ * Input: It receives visibility state, an optional movie, close and save callbacks, and title, actor, and year entries from the user.
+ * Processing and Output: It initializes and validates form values, converts comma-separated actors into an array, and outputs normalized movie data to the parent component.
+ */
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
 import { Movie } from "@/types/movie";
 
+// Component contract: define modal state and the actions supplied by its parent.
 interface MovieModalProps {
   isOpen: boolean;
   movie?: Movie | null;
@@ -16,10 +24,12 @@ export default function MovieModal({
   onClose,
   onSave,
 }: MovieModalProps) {
+  // Form state: store the editable values displayed in the modal.
   const [title, setTitle] = useState("");
   const [actors, setActors] = useState("");
   const [releaseYear, setReleaseYear] = useState("");
 
+  // Form initialization: load an existing movie or clear fields for a new record.
   useEffect(() => {
     if (movie) {
       setTitle(movie.title);
@@ -32,10 +42,12 @@ export default function MovieModal({
     }
   }, [movie, isOpen]);
 
+  // Visibility control: render nothing while the modal is closed.
   if (!isOpen) {
     return null;
   }
 
+  // Form processing: normalize user entries and submit database-compatible values.
   const handleSubmit = (
     event: FormEvent<HTMLFormElement>
   ) => {
@@ -57,6 +69,7 @@ export default function MovieModal({
     setReleaseYear("");
   };
 
+  // Modal output: render the overlay, form fields, and command buttons.
   return (
     <div
       className="modal-overlay"
@@ -68,7 +81,7 @@ export default function MovieModal({
           event.stopPropagation()
         }
       >
-        {/* Header */}
+        {/* Modal heading and close control. */}
         <div className="modal-header">
           <div>
             <span className="modal-eyebrow">
@@ -90,9 +103,9 @@ export default function MovieModal({
           </button>
         </div>
 
-        {/* Form */}
+        {/* Movie input form. */}
         <form onSubmit={handleSubmit}>
-          {/* Movie title */}
+          {/* Title input. */}
           <div className="form-group">
             <label htmlFor="title">
               Movie Title
@@ -110,7 +123,7 @@ export default function MovieModal({
             />
           </div>
 
-          {/* Actors */}
+          {/* Comma-separated actor input. */}
           <div className="form-group">
             <label htmlFor="actors">
               Actors
@@ -132,7 +145,7 @@ export default function MovieModal({
             </small>
           </div>
 
-          {/* Release year */}
+          {/* Numeric release-year input. */}
           <div className="form-group">
             <label htmlFor="releaseYear">
               Release Year
@@ -152,7 +165,7 @@ export default function MovieModal({
             />
           </div>
 
-          {/* Buttons */}
+          {/* Cancel and save actions. */}
           <div className="modal-actions">
             <button
               type="button"

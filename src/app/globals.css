@@ -1,3 +1,12 @@
+/*
+ * Program: Tiny Cinema
+ * Date: August 12, 2026
+ * Description: This stylesheet defines the visual presentation for authentication, navigation, movie management, modal, and footer interfaces.
+ * Input: It receives class names and semantic elements rendered by the application's React components.
+ * Processing and Output: It applies layout, color, typography, interaction, and responsive rules to output a consistent interface across desktop and mobile screens.
+ */
+
+/* Global reset and element defaults. */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -28,9 +37,7 @@ a {
   color: inherit;
 }
 
-/* =========================
-   SITE
-========================= */
+/* Main application shell. */
 
 .site {
   min-height: 100vh;
@@ -38,9 +45,7 @@ a {
   flex-direction: column;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* Primary navigation. */
 
 .navbar {
   height: 72px;
@@ -77,9 +82,7 @@ a {
   color: #253858;
 }
 
-/* =========================
-   MAIN
-========================= */
+/* Main content container. */
 
 .main {
   width: min(1200px, 90%);
@@ -88,9 +91,7 @@ a {
   padding: 55px 0 80px;
 }
 
-/* =========================
-   HERO
-========================= */
+/* Collection introduction and primary add action. */
 
 .hero {
   background: linear-gradient(
@@ -174,9 +175,7 @@ a {
   line-height: 12px;
 }
 
-/* =========================
-   SECTION HEADING
-========================= */
+/* Collection section heading and record count. */
 
 .movie-section {
   width: 100%;
@@ -212,9 +211,7 @@ a {
   color: #8a96a8;
 }
 
-/* =========================
-   MOVIE GRID
-========================= */
+/* Responsive movie grid. */
 
 .movie-grid {
   display: grid;
@@ -225,9 +222,7 @@ a {
   gap: 22px;
 }
 
-/* =========================
-   MOVIE CARD
-========================= */
+/* Individual movie cards and actions. */
 
 .movie-card {
   background: white;
@@ -371,9 +366,7 @@ a {
   background: #ffe2e2;
 }
 
-/* =========================
-   EMPTY STATE
-========================= */
+/* Empty collection message. */
 
 .empty-state {
   background: white;
@@ -402,9 +395,7 @@ a {
   margin-bottom: 20px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* Contact and copyright footer. */
 
 .footer {
   background: #243342;
@@ -435,9 +426,7 @@ a {
   line-height: 1.7;
 }
 
-/* =========================
-   MODAL
-========================= */
+/* Movie editor modal and overlay. */
 
 .modal-overlay {
   position: fixed;
@@ -527,9 +516,7 @@ a {
   background: #e7ebef;
 }
 
-/* =========================
-   FORM
-========================= */
+/* Shared movie form controls. */
 
 .form-group {
   margin-bottom: 20px;
@@ -614,9 +601,7 @@ a {
   background: #264d55;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* Tablet and mobile layout adjustments. */
 
 @media (max-width: 850px) {
   .navbar {
@@ -685,9 +670,7 @@ a {
   }
 }
 
-/* =========================
-   AUTH PAGES
-========================= */
+/* Login and registration pages. */
 
 .auth-page {
   min-height: 100vh;
@@ -901,6 +884,7 @@ a {
   }
 }
 
+/* Navigation logout control. */
 .logout-button {
   border: none;
   background: none;

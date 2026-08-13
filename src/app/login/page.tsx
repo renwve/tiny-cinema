@@ -1,3 +1,10 @@
+/**
+ * Program: Tiny Cinema
+ * Date: August 12, 2026
+ * Description: This page authenticates existing Tiny Cinema users with Supabase.
+ * Input: It accepts an email address and password submitted through the login form.
+ * Processing and Output: It validates the credentials with Supabase, displays an error when authentication fails, and redirects successful users to the movie collection.
+ */
 "use client";
 
 import Link from "next/link";
@@ -9,12 +16,14 @@ import { createClient } from "@/lib/supabase/client";
 export default function LoginPage() {
   const router = useRouter();
 
+  // Form state: track credentials, submission progress, and authentication errors.
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Login processing: submit credentials and route authenticated users to movies.
   const handleLogin = async (
     event: FormEvent<HTMLFormElement>
   ) => {
@@ -41,6 +50,7 @@ export default function LoginPage() {
     router.refresh();
   };
 
+  // Page output: render the login form and registration link.
   return (
     <main className="auth-page">
       <div className="auth-card">

@@ -1,3 +1,10 @@
+/**
+ * Program: Tiny Cinema
+ * Date: August 12, 2026
+ * Description: This page provides the main interface for viewing and managing the Tiny Cinema movie collection.
+ * Input: It receives movie records from Supabase and add, edit, delete, and form entries from the user.
+ * Processing and Output: It performs database CRUD operations, refreshes local state, displays errors, and outputs the collection grid and movie editor modal.
+ */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -8,17 +15,21 @@ import MovieModal from "@/components/moviemodal";
 import { Movie } from "@/types/movie";
 import { createClient } from "@/lib/supabase/client";
 
+// Shared database connection: provide browser access to the movies table.
 const supabase = createClient();
 
 export default function MoviesPage() {
+  // Page state: track movie data, modal visibility, selection, and loading errors.
   const [movies, setMovies] = useState<Movie[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  // Initial data loading: retrieve the collection when the page mounts.
   useEffect(() => {
     fetchMovies();
   }, []);
 
+  // Database read: load movies in newest-first order.
   const fetchMovies = async () => {
     const { data, error } = await supabase
       .from("movies")
@@ -32,6 +43,7 @@ export default function MoviesPage() {
     }
   };
 
+  // Modal controls: open the form in either create or edit mode.
   const handleAddMovie = () => {
     setSelectedMovie(null);
     setIsModalOpen(true);
@@ -42,6 +54,7 @@ export default function MoviesPage() {
     setIsModalOpen(true);
   };
 
+  // Database delete: confirm the request, remove the record, and refresh the list.
   const handleDeleteMovie = async (id: string | number) => {
     const confirmed = window.confirm("Are you sure you want to delete this movie?");
 
@@ -60,6 +73,7 @@ export default function MoviesPage() {
     }
   };
 
+  // Database write: update the selected record or insert a new one.
   const handleSaveMovie = async (movieData: Omit<Movie, "id">) => {
     if (selectedMovie) {
       // UPDATE operation in Supabase
@@ -89,6 +103,7 @@ export default function MoviesPage() {
     fetchMovies(); // Refresh list to reflect database changes
   };
 
+  // Page output: render navigation, collection controls, movie cards, and the modal.
   return (
     <div className="site">
       <Navbar />

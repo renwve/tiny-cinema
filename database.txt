@@ -1,6 +1,10 @@
--- Run this in the Supabase SQL Editor
+-- Program: Tiny Cinema
+-- Date: August 12, 2026
+-- Description: This SQL script creates the database table used to store the Tiny Cinema movie collection.
+-- Input: It defines the title, actors, release year, optional image URL, and generated database values accepted for each record.
+-- Processing and Output: Supabase executes the schema statements and outputs a movies table with a UUID primary key, timestamp, and unrestricted row access.
 
--- Create Movies Table
+-- Movies table: define the stored fields, constraints, defaults, and primary key.
 create table movies (
     id uuid default gen_random_uuid() primary key,
     title text not null,
@@ -9,4 +13,6 @@ create table movies (
     image_url text,
     created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
+
+-- Access policy: allow browser CRUD operations without row-level restrictions.
 alter table movies disable row level security;

@@ -1,3 +1,12 @@
+/**
+ * Program: Tiny Cinema
+ * Date: August 12, 2026
+ * Description: This component provides the shared contact and copyright footer for the movie collection page.
+ * Input: It requires no properties or user-entered data because its content is fixed.
+ * Processing and Output: It groups the application identity and contact details and outputs a semantic footer element.
+ */
+
+// Footer content: display branding, contact information, and ownership details.
 export default function Footer() {
   return (
     <footer className="footer" id="contact">
