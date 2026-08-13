@@ -19,17 +19,14 @@ export default function RegisterPage() {
   // Form state: track account entries, feedback messages, and submission progress.
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] =
-    useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
   // Registration processing: validate passwords and create the Supabase account.
-  const handleRegister = async (
-    event: FormEvent<HTMLFormElement>
-  ) => {
+  const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     setError("");
@@ -41,9 +38,7 @@ export default function RegisterPage() {
     }
 
     if (password.length < 6) {
-      setError(
-        "Password must be at least 6 characters."
-      );
+      setError("Password must be at least 6 characters.");
       return;
     }
 
@@ -64,9 +59,7 @@ export default function RegisterPage() {
 
     setLoading(false);
 
-    setSuccess(
-      "Account created successfully! Redirecting to login..."
-    );
+    setSuccess("Account created successfully! Redirecting to login...");
 
     setTimeout(() => {
       router.push("/login");
@@ -83,90 +76,58 @@ export default function RegisterPage() {
         </div>
 
         <div className="auth-header">
-          <span className="auth-eyebrow">
-            NEW ACCOUNT
-          </span>
+          <span className="auth-eyebrow">NEW ACCOUNT</span>
 
           <h1>Create account</h1>
 
-          <p>
-            Create your account to start managing
-            the movie database.
-          </p>
+          <p>Create your account to start managing the movie database.</p>
         </div>
 
-        <form
-          onSubmit={handleRegister}
-          className="auth-form"
-        >
+        <form onSubmit={handleRegister} className="auth-form">
           <div className="form-group">
-            <label htmlFor="email">
-              Email Address
-            </label>
+            <label htmlFor="email">Email Address</label>
 
             <input
               id="email"
               type="email"
               placeholder="you@example.com"
               value={email}
-              onChange={(event) =>
-                setEmail(event.target.value)
-              }
+              onChange={(event) => setEmail(event.target.value)}
               required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">
-              Password
-            </label>
+            <label htmlFor="password">Password</label>
 
             <input
               id="password"
               type="password"
               placeholder="At least 6 characters"
               value={password}
-              onChange={(event) =>
-                setPassword(event.target.value)
-              }
+              onChange={(event) => setPassword(event.target.value)}
               required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="confirmPassword">
-              Confirm Password
-            </label>
+            <label htmlFor="confirmPassword">Confirm Password</label>
 
             <input
               id="confirmPassword"
               type="password"
               placeholder="Enter your password again"
               value={confirmPassword}
-              onChange={(event) =>
-                setConfirmPassword(event.target.value)
-              }
+              onChange={(event) => setConfirmPassword(event.target.value)}
               required
             />
           </div>
 
-          {error && (
-            <div className="auth-error">
-              {error}
-            </div>
-          )}
+          {error && <div className="auth-error">{error}</div>}
 
-          {success && (
-            <div className="auth-success">
-              {success}
-            </div>
-          )}
+          {success && <div className="auth-success">{success}</div>}
 
-          <button
-            type="submit"
-            className="auth-submit"
-            disabled={loading}
-          >
+          <button type="submit" className="auth-submit" disabled={loading}>
             {loading ? "Creating account..." : "Create Account"}
           </button>
         </form>
@@ -174,9 +135,7 @@ export default function RegisterPage() {
         <div className="auth-footer">
           <span>Already have an account?</span>
 
-          <Link href="/login">
-            Sign in
-          </Link>
+          <Link href="/login">Sign in</Link>
         </div>
       </div>
     </main>
