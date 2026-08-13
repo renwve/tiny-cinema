@@ -10,7 +10,7 @@ import "./globals.css";
 
 // Page metadata: provide the browser title and search description.
 export const metadata: Metadata = {
-  title: "IMR Movies",
+  title: "tiny cinema",
   description: "Internet Movies Rental movie database",
 };
 
