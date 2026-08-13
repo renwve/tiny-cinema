@@ -72,7 +72,7 @@ export default function RegisterPage() {
       <div className="auth-card">
         <div className="auth-brand">
           <span>🎬</span>
-          <strong>IMR Movies</strong>
+          <strong>tiny cinema</strong>
         </div>
 
         <div className="auth-header">
