@@ -7,9 +7,10 @@
  */
 import type { NextConfig } from "next";
 
-// Framework options: enable automatic React optimization during compilation.
-const nextConfig: NextConfig = {
-  reactCompiler: true,
+const nextConfig = {
+  output: 'export',
+  images: {
+  },
 };
 
 // Configuration output: expose the settings to Next.js.
